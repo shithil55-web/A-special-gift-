@@ -1,1506 +1,248 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>একটা ছোট্ট উপহার ❤️</title>
-
 <style>
-
-/* =====================================================
-   BASIC
-===================================================== */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html,body{
-    width:100%;
-    height:100%;
-    overflow:hidden;
-}
-
-body{
-    font-family:
-        "Noto Sans Bengali",
-        "SolaimanLipi",
-        Arial,
-        sans-serif;
-
-    background:#020005;
-}
-
-
-/* =====================================================
-   GIFT SCREEN
-===================================================== */
-
-#giftScreen{
-
-    position:fixed;
-    inset:0;
-    z-index:9999;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    text-align:center;
-    overflow:hidden;
-
-    background:
-        radial-gradient(
-            ellipse at 50% 30%,
-            rgba(105,0,55,.50),
-            rgba(38,0,27,.80) 35%,
-            rgba(7,0,12,.97) 70%,
-            #000 100%
-        );
-
-    transition:
-        opacity 1.2s ease,
-        transform 1.2s ease;
-}
-
-
-/* Romantic light */
-
-#giftScreen::before{
-
-    content:"";
-
-    position:absolute;
-    inset:-20%;
-
-    background:
-        radial-gradient(
-            circle at 20% 30%,
-            rgba(255,20,147,.14),
-            transparent 20%
-        ),
-        radial-gradient(
-            circle at 80% 25%,
-            rgba(130,0,255,.12),
-            transparent 22%
-        ),
-        radial-gradient(
-            circle at 50% 80%,
-            rgba(255,0,100,.10),
-            transparent 25%
-        );
-
-    filter:blur(35px);
-
-    animation:
-        aura 8s ease-in-out infinite alternate;
-
-    pointer-events:none;
-}
-
-@keyframes aura{
-
-    from{
-        transform:scale(1);
-        opacity:.5;
-    }
-
-    to{
-        transform:scale(1.15);
-        opacity:1;
-    }
-}
-
-
-/* Moon */
-
-#giftScreen::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:130px;
-    height:130px;
-
-    top:7%;
-    right:9%;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,230,245,.22),
-            rgba(255,100,180,.08) 40%,
-            transparent 72%
-        );
-
-    box-shadow:
-        0 0 50px rgba(255,100,180,.08);
-
-    animation:
-        moon 4s ease-in-out infinite alternate;
-}
-
-@keyframes moon{
-
-    from{
-        transform:scale(.9);
-        opacity:.5;
-    }
-
-    to{
-        transform:scale(1.1);
-        opacity:1;
-    }
-}
-
-
-/* =====================================================
-   GLOW
-===================================================== */
-
-.giftGlow{
-
-    position:absolute;
-
-    width:350px;
-    height:350px;
-
-    left:50%;
-    top:40%;
-
-    transform:
-        translate(-50%,-50%);
-
-    background:#ff0080;
-
-    border-radius:50%;
-
-    filter:blur(130px);
-
-    opacity:.18;
-
-    animation:
-        glow 3s ease-in-out infinite alternate;
-}
-
-@keyframes glow{
-
-    from{
-        transform:
-            translate(-50%,-50%)
-            scale(.8);
-    }
-
-    to{
-        transform:
-            translate(-50%,-50%)
-            scale(1.3);
-    }
-}
-
-
-/* =====================================================
-   PROPOSAL ANIMATION
-===================================================== */
-
-.proposeScene{
-
-    position:absolute;
-
-    left:50%;
-    top:15%;
-
-    width:330px;
-    height:235px;
-
-    transform:
-        translateX(-50%);
-
-    z-index:20;
-}
-
-
-/* Ground */
-
-.ground{
-
-    position:absolute;
-
-    left:50%;
-    bottom:18px;
-
-    width:270px;
-    height:25px;
-
-    transform:
-        translateX(-50%);
-
-    background:
-        radial-gradient(
-            ellipse,
-            rgba(255,20,147,.35),
-            transparent 70%
-        );
-
-    filter:blur(12px);
-
-    border-radius:50%;
-
-    animation:
-        ground 3s ease-in-out infinite alternate;
-}
-
-@keyframes ground{
-
-    from{
-        opacity:.3;
-        transform:
-            translateX(-50%)
-            scale(.8);
-    }
-
-    to{
-        opacity:.8;
-        transform:
-            translateX(-50%)
-            scale(1.1);
-    }
-}
-
-
-/* =====================================================
-   GIRL
-===================================================== */
-
-.girl{
-
-    position:absolute;
-
-    right:38px;
-    bottom:28px;
-
-    width:55px;
-    height:145px;
-
-    animation:
-        girlMove 3s ease-in-out infinite;
-}
-
-.girl .hair{
-
-    position:absolute;
-
-    left:8px;
-    top:-2px;
-
-    width:40px;
-    height:52px;
-
-    background:
-        linear-gradient(
-            180deg,
-            #060308,
-            #27101e
-        );
-
-    border-radius:
-        50% 50% 45% 45%;
-
-    z-index:3;
-}
-
-.girl .head{
-
-    position:absolute;
-
-    left:15px;
-    top:8px;
-
-    width:29px;
-    height:32px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ffd0c0,
-            #d9968a
-        );
-
-    border-radius:50%;
-
-    z-index:2;
-}
-
-.girl .body{
-
-    position:absolute;
-
-    left:10px;
-    top:38px;
-
-    width:36px;
-    height:73px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #c00070,
-            #42062e
-        );
-
-    border-radius:
-        18px 18px 8px 8px;
-
-    clip-path:
-        polygon(
-            25% 0,
-            75% 0,
-            100% 100%,
-            0 100%
-        );
-
-    box-shadow:
-        0 0 18px rgba(255,20,147,.22);
-}
-
-.girl .leg1,
-.girl .leg2{
-
-    position:absolute;
-
-    top:103px;
-
-    width:6px;
-    height:36px;
-
-    background:#21121c;
-
-    border-radius:5px;
-}
-
-.girl .leg1{
-    left:19px;
-}
-
-.girl .leg2{
-    left:31px;
-}
-
-@keyframes girlMove{
-
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-2px);
-    }
-}
-
-
-/* =====================================================
-   BOY
-===================================================== */
-
-.boy{
-
-    position:absolute;
-
-    left:18px;
-    bottom:28px;
-
-    width:58px;
-    height:145px;
-
-    animation:
-        boyMove
-        5.5s
-        cubic-bezier(.65,0,.35,1)
-        forwards;
-}
-
-.boy .head{
-
-    position:absolute;
-
-    left:15px;
-    top:8px;
-
-    width:30px;
-    height:32px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #c98d70,
-            #8c5847
-        );
-
-    border-radius:50%;
-
-    z-index:3;
-}
-
-.boy .hair{
-
-    position:absolute;
-
-    left:13px;
-    top:2px;
-
-    width:34px;
-    height:18px;
-
-    background:#07060a;
-
-    border-radius:
-        60% 60% 30% 30%;
-
-    z-index:5;
-}
-
-.boy .body{
-
-    position:absolute;
-
-    left:12px;
-    top:38px;
-
-    width:38px;
-    height:70px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #202957,
-            #090d24
-        );
-
-    border-radius:
-        14px 14px 7px 7px;
-}
-
-.boy .leg1,
-.boy .leg2{
-
-    position:absolute;
-
-    top:102px;
-
-    width:9px;
-    height:38px;
-
-    background:#080b19;
-
-    border-radius:6px;
-}
-
-.boy .leg1{
-    left:14px;
-}
-
-.boy .leg2{
-    left:31px;
-}
-
-.boy .arm{
-
-    position:absolute;
-
-    left:34px;
-    top:48px;
-
-    width:43px;
-    height:7px;
-
-    background:#b77b62;
-
-    border-radius:10px;
-
-    transform-origin:left center;
-
-    z-index:8;
-
-    animation:
-        arm
-        5.5s
-        ease-in-out
-        forwards;
-}
-
-@keyframes arm{
-
-    0%,55%{
-        transform:rotate(-15deg);
-    }
-
-    70%{
-        transform:rotate(-5deg);
-    }
-
-    100%{
-        transform:rotate(-2deg);
-    }
-}
-
-
-/* Boy walking + kneeling */
-
-@keyframes boyMove{
-
-    0%{
-        transform:
-            translateX(0)
-            translateY(0);
-    }
-
-    40%{
-        transform:
-            translateX(95px)
-            translateY(0);
-    }
-
-    54%{
-        transform:
-            translateX(115px)
-            translateY(0);
-    }
-
-    70%,100%{
-        transform:
-            translateX(115px)
-            translateY(24px)
-            scale(.86);
-    }
-}
-
-
-/* =====================================================
-   OFFER HEART
-===================================================== */
-
-.proposeHeart{
-
-    position:absolute;
-
-    left:176px;
-    top:75px;
-
-    z-index:30;
-
-    font-size:25px;
-
-    opacity:0;
-
-    filter:
-        drop-shadow(0 0 5px #ff69b4)
-        drop-shadow(0 0 15px #ff1493)
-        drop-shadow(0 0 30px #ff0080);
-
-    animation:
-        offerHeart
-        5.5s
-        ease-in-out
-        forwards;
-}
-
-@keyframes offerHeart{
-
-    0%,55%{
-        opacity:0;
-        transform:
-            scale(.2)
-            translateY(10px);
-    }
-
-    65%{
-        opacity:1;
-        transform:
-            scale(1.3)
-            translateY(0);
-    }
-
-    75%,100%{
-        opacity:1;
-        transform:
-            scale(1)
-            translateY(0);
-    }
-}
-
-
-/* =====================================================
-   SMALL HEARTS
-===================================================== */
-
-.miniHeart{
-
-    position:absolute;
-
-    color:#ff69b4;
-
-    font-size:12px;
-
-    opacity:0;
-
-    text-shadow:
-        0 0 8px #ff1493,
-        0 0 18px #ff0080;
-
-    animation:
-        miniFloat
-        5s
-        ease-in-out
-        infinite;
-}
-
-.miniHeart:nth-child(1){
-    left:35px;
-    top:80px;
-    animation-delay:.8s;
-}
-
-.miniHeart:nth-child(2){
-    left:270px;
-    top:65px;
-    animation-delay:1.7s;
-}
-
-.miniHeart:nth-child(3){
-    left:80px;
-    top:20px;
-    animation-delay:2.4s;
-}
-
-.miniHeart:nth-child(4){
-    left:235px;
-    top:120px;
-    animation-delay:3s;
-}
-
-@keyframes miniFloat{
-
-    0%{
-        opacity:0;
-        transform:
-            translateY(15px)
-            scale(.5);
-    }
-
-    30%{
-        opacity:.8;
-    }
-
-    100%{
-        opacity:0;
-        transform:
-            translateY(-35px)
-            scale(1.2);
-    }
-}
-
-
-/* =====================================================
-   GIFT CONTENT
-===================================================== */
-
-.giftContent{
-
-    position:absolute;
-
-    z-index:50;
-
-    left:50%;
-
-    bottom:4%;
-
-    transform:
-        translateX(-50%);
-
-    width:90%;
-
-    max-width:450px;
-}
-
-.giftSmall{
-
-    color:#ff9dcc;
-
-    font-size:13px;
-
-    letter-spacing:4px;
-
-    margin-bottom:10px;
-
-    text-shadow:
-        0 0 10px #ff1493;
-}
-
-.giftTitle{
-
-    color:white;
-
-    font-size:28px;
-
-    margin-bottom:7px;
-
-    text-shadow:
-        0 0 10px #ff69b4,
-        0 0 25px #ff1493,
-        0 0 45px #ff0080;
-}
-
-.giftSubtitle{
-
-    color:#ffb6d9;
-
-    font-size:13px;
-
-    margin-bottom:18px;
-}
-
-
-/* =====================================================
-   OPEN BUTTON
-===================================================== */
-
-.openBtn{
-
-    position:relative;
-
-    border:none;
-    outline:none;
-
-    cursor:pointer;
-
-    padding:15px 32px;
-
-    border-radius:50px;
-
-    color:white;
-
-    font-size:15px;
-
-    font-weight:bold;
-
-    letter-spacing:1px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff1493,
-            #ff007f,
-            #c000ff
-        );
-
-    box-shadow:
-        0 0 10px #ff1493,
-        0 0 25px #ff1493,
-        0 0 50px #ff0080;
-
-    overflow:hidden;
-
-    animation:
-        buttonPulse
-        2s
-        ease-in-out
-        infinite;
-}
-
-@keyframes buttonPulse{
-
-    0%,100%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.05);
-    }
-}
-
-.openBtn::before{
-
-    content:"";
-
-    position:absolute;
-
-    top:0;
-    left:-100%;
-
-    width:60%;
-    height:100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.55),
-            transparent
-        );
-
-    transform:skewX(-20deg);
-
-    animation:
-        shine
-        2.5s
-        infinite;
-}
-
-@keyframes shine{
-
-    0%{
-        left:-100%;
-    }
-
-    50%,100%{
-        left:150%;
-    }
-}
-
-
-/* =====================================================
-   MAIN SCENE
-===================================================== */
-
-#scene{
-
-    position:relative;
-
-    width:100%;
-    height:100vh;
-
-    overflow:hidden;
-
-    background:
-        radial-gradient(
-            circle at center,
-            #3b001f 0%,
-            #18000f 30%,
-            #060008 65%,
-            #000 100%
-        );
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transition:
-        opacity 1.5s ease;
-}
-
-.glow{
-
-    position:absolute;
-
-    width:400px;
-    height:400px;
-
-    left:50%;
-    top:32%;
-
-    transform:
-        translate(-50%,-50%);
-
-    background:#ff0080;
-
-    border-radius:50%;
-
-    filter:blur(140px);
-
-    opacity:.18;
-
-    animation:
-        mainGlow
-        3s
-        ease-in-out
-        infinite alternate;
-}
-
-@keyframes mainGlow{
-
-    from{
-        transform:
-            translate(-50%,-50%)
-            scale(.8);
-    }
-
-    to{
-        transform:
-            translate(-50%,-50%)
-            scale(1.3);
-    }
-}
-
-
-/* =====================================================
-   HEART TEXT
-===================================================== */
-
-#heart{
-
-    position:absolute;
-
-    width:100%;
-    height:100%;
-
-    perspective:1400px;
-
-    transform-style:preserve-3d;
-}
-
-.love{
-
-    position:absolute;
-
-    transform-style:preserve-3d;
-
-    white-space:nowrap;
-
-    pointer-events:none;
-}
-
-.loveText{
-
-    color:#ffb5d9;
-
-    font-size:11px;
-
-    font-weight:bold;
-
-    text-shadow:
-        0 0 4px #fff,
-        0 0 8px #ff69b4,
-        0 0 15px #ff1493,
-        0 0 30px #ff0080;
-
-    animation:
-        textGlow
-        1.5s
-        ease-in-out
-        infinite alternate;
-}
-
-@keyframes textGlow{
-
-    from{
-        opacity:.25;
-    }
-
-    to{
-        opacity:1;
-    }
-}
-
-
-/* =====================================================
-   CENTER TITLE
-===================================================== */
-
-.center{
-
-    position:absolute;
-
-    left:50%;
-
-    top:25%;
-
-    transform:
-        translate(-50%,-50%);
-
-    text-align:center;
-
-    width:90%;
-
-    z-index:1000;
-}
-
-.small{
-
-    color:#ff8fc5;
-
-    font-size:11px;
-
-    letter-spacing:4px;
-
-    margin-bottom:8px;
-}
-
-.title{
-
-    font-size:42px;
-
-    font-weight:800;
-
-    background:
-        linear-gradient(
-            90deg,
-            #fff,
-            #ffb6d9,
-            #ff1493,
-            #fff,
-            #ffb6d9
-        );
-
-    background-size:400% auto;
-
-    -webkit-background-clip:text;
-
-    background-clip:text;
-
-    color:transparent;
-
-    animation:
-        gradient 4s linear infinite,
-        titlePulse 1.8s ease-in-out infinite alternate;
-
-    filter:
-        drop-shadow(0 0 8px #ff1493)
-        drop-shadow(0 0 20px #ff0080);
-}
-
-@keyframes gradient{
-
-    to{
-        background-position:400% center;
-    }
-}
-
-@keyframes titlePulse{
-
-    from{
-        transform:scale(.95);
-    }
-
-    to{
-        transform:scale(1.08);
-    }
-}
-
-.subtitle{
-
-    margin-top:8px;
-
-    color:#ffd3e8;
-
-    font-size:13px;
-
-    letter-spacing:2px;
-
-    text-shadow:
-        0 0 8px #ff1493;
-}
-
-
-/* =====================================================
-   BIG HEART
-===================================================== */
-
-.bigHeart{
-
-    margin:17px auto 0;
-
-    width:32px;
-    height:32px;
-
-    background:#ff167f;
-
-    transform:
-        rotate(-45deg);
-
-    box-shadow:
-        0 0 10px #ff1493,
-        0 0 25px #ff1493,
-        0 0 50px #ff0080;
-
-    animation:
-        heartbeat
-        1s
-        infinite;
-}
-
-.bigHeart:before,
-.bigHeart:after{
-
-    content:"";
-
-    position:absolute;
-
-    width:32px;
-    height:32px;
-
-    background:#ff167f;
-
-    border-radius:50%;
-}
-
-.bigHeart:before{
-
-    top:-16px;
-    left:0;
-}
-
-.bigHeart:after{
-
-    top:0;
-    left:16px;
-}
-
-@keyframes heartbeat{
-
-    0%,100%{
-        transform:
-            rotate(-45deg)
-            scale(1);
-    }
-
-    50%{
-        transform:
-            rotate(-45deg)
-            scale(1.25);
-    }
-}
-
-
-/* =====================================================
-   PROPOSAL BOX
-   DESKTOP
-===================================================== */
-
-.proposal{
-
-    position:absolute;
-
-    left:50%;
-
-    /*
-       DESKTOP-এও নিচে একদম edge-এ নয়
-    */
-
-    bottom:7vh;
-
-    transform:
-        translateX(-50%);
-
-    width:94%;
-
-    max-width:650px;
-
-    padding:
-        12px 10px;
-
-    text-align:center;
-
-    z-index:2000;
-
-    color:#ffe6f2;
-
-    font-size:12px;
-
-    line-height:1.55;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,20,147,.12),
-            rgba(255,0,128,.05),
-            rgba(160,0,255,.09)
-        );
-
-    border:
-        1px solid
-        rgba(255,140,200,.28);
-
-    border-radius:18px;
-
-    box-shadow:
-        0 0 20px
-        rgba(255,20,147,.15),
-
-        inset 0 0 20px
-        rgba(255,20,147,.04);
-
-    backdrop-filter:
-        blur(6px);
-
-    -webkit-backdrop-filter:
-        blur(6px);
-
-    animation:
-        proposalGlow
-        2.5s
-        ease-in-out
-        infinite alternate;
-}
-
-
-/* Top light */
-
-.proposal::before{
-
-    content:"";
-
-    position:absolute;
-
-    left:15%;
-    right:15%;
-
-    top:0;
-
-    height:1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #ff69b4,
-            #fff,
-            #ff1493,
-            transparent
-        );
-
-    box-shadow:
-        0 0 8px #ff1493;
-}
-
-
-/* Lines */
-
-.proposal .line{
-
-    opacity:0;
-
-    margin:1px 0;
-
-    text-shadow:
-        0 0 4px #ff69b4,
-        0 0 10px #ff1493;
-
-    animation:
-        lineAppear
-        1s
-        ease
-        forwards;
-}
-
-.proposal .line::before{
-
-    content:"♥";
-
-    color:#ff69b4;
-
-    font-size:8px;
-
-    margin-right:4px;
-}
-
-.proposal .line:nth-child(1){
-    animation-delay:.4s;
-}
-
-.proposal .line:nth-child(2){
-    animation-delay:1s;
-}
-
-.proposal .line:nth-child(3){
-    animation-delay:1.6s;
-}
-
-.proposal .line:nth-child(4){
-    animation-delay:2.2s;
-}
-
-.proposal .line:nth-child(5){
-    animation-delay:2.8s;
-}
-
-.proposal .line:nth-child(6){
-    animation-delay:3.4s;
-}
-
-.proposal .line:nth-child(7){
-    animation-delay:4s;
-}
-
-
-/* Signature */
-
-.signature{
-
-    margin-top:6px;
-
-    padding-top:5px;
-
-    border-top:
-        1px solid
-        rgba(255,130,190,.18);
-
-    color:#ff9dcc;
-
-    font-size:14px;
-
-    font-weight:bold;
-
-    opacity:0;
-
-    animation:
-        signature
-        1.5s
-        4.7s
-        forwards;
-
-    text-shadow:
-        0 0 8px #ff1493,
-        0 0 18px #ff1493;
-}
-
-
-@keyframes lineAppear{
-
-    from{
-        opacity:0;
-
-        transform:
-            translateY(12px);
-
-        filter:blur(4px);
-    }
-
-    to{
-        opacity:1;
-
-        transform:
-            translateY(0);
-
-        filter:blur(0);
-    }
-}
-
-
-@keyframes signature{
-
-    from{
-        opacity:0;
-
-        transform:
-            scale(.8);
-    }
-
-    to{
-        opacity:1;
-
-        transform:
-            scale(1);
-    }
-}
-
-
-@keyframes proposalGlow{
-
-    from{
-        box-shadow:
-            0 0 12px
-            rgba(255,20,147,.10);
-    }
-
-    to{
-        box-shadow:
-            0 0 28px
-            rgba(255,20,147,.20);
-    }
-}
-
-
-/* =====================================================
-   FLOATING HEARTS
-===================================================== */
-
-.floatHeart{
-
-    position:absolute;
-
-    color:#ff4fa3;
-
-    text-shadow:
-        0 0 8px #ff1493,
-        0 0 18px #ff1493;
-
-    animation:
-        floatUp
-        linear
-        infinite;
-}
-
-@keyframes floatUp{
-
-    0%{
-        transform:
-            translateY(110vh)
-            scale(.3);
-
-        opacity:0;
-    }
-
-    15%{
-        opacity:.8;
-    }
-
-    100%{
-        transform:
-            translateY(-20vh)
-            scale(1.3)
-            rotate(360deg);
-
-        opacity:0;
-    }
-}
-
-
-/* =====================================================
-   PARTICLES
-===================================================== */
-
-.particle{
-
-    position:absolute;
-
-    width:3px;
-    height:3px;
-
-    border-radius:50%;
-
-    background:white;
-
-    box-shadow:
-        0 0 6px white,
-        0 0 12px #ff69b4,
-        0 0 20px #ff1493;
-
-    animation:
-        twinkle
-        2s
-        ease-in-out
-        infinite alternate;
-}
-
-@keyframes twinkle{
-
-    from{
-        opacity:.1;
-        transform:scale(.5);
-    }
-
-    to{
-        opacity:1;
-        transform:scale(1.8);
-    }
-}
-
-
-/* ====
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden}
+body{font-family:"Noto Sans Bengali","SolaimanLipi",Arial,sans-serif;background:#020005}
+
+#giftScreen{position:fixed;inset:0;z-index:9999;display:flex;justify-content:center;align-items:center;text-align:center;overflow:hidden;background:radial-gradient(circle at center,#4b002b 0%,#18000f 35%,#050008 75%,#000 100%);transition:opacity 1.2s ease,transform 1.2s ease}
+#giftScreen:before{content:"";position:absolute;inset:-20%;background:radial-gradient(circle at 20% 30%,rgba(255,20,147,.14),transparent 20%),radial-gradient(circle at 80% 25%,rgba(120,0,255,.12),transparent 22%),radial-gradient(circle at 50% 80%,rgba(255,0,100,.10),transparent 25%);filter:blur(35px);animation:aura 8s ease-in-out infinite alternate}
+@keyframes aura{from{transform:scale(1);opacity:.5}to{transform:scale(1.15);opacity:1}}
+
+.giftGlow{position:absolute;width:340px;height:340px;left:50%;top:38%;transform:translate(-50%,-50%);background:#ff0080;border-radius:50%;filter:blur(130px);opacity:.18;animation:giftGlow 3s ease-in-out infinite alternate}
+@keyframes giftGlow{from{transform:translate(-50%,-50%) scale(.8);opacity:.1}to{transform:translate(-50%,-50%) scale(1.3);opacity:.28}}
+
+.proposeScene{position:absolute;left:50%;top:10%;width:330px;height:240px;transform:translateX(-50%);z-index:20}
+.ground{position:absolute;left:50%;bottom:18px;width:270px;height:25px;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(255,20,147,.35),transparent 70%);filter:blur(12px);border-radius:50%}
+.girl{position:absolute;right:38px;bottom:28px;width:55px;height:145px;animation:girlMove 3s ease-in-out infinite}
+.girl .hair{position:absolute;left:8px;top:-2px;width:40px;height:52px;background:linear-gradient(180deg,#060308,#27101e);border-radius:50% 50% 45% 45%;z-index:3}
+.girl .head{position:absolute;left:15px;top:8px;width:29px;height:32px;background:linear-gradient(135deg,#ffd0c0,#d9968a);border-radius:50%;z-index:2}
+.girl .body{position:absolute;left:10px;top:38px;width:36px;height:73px;background:linear-gradient(135deg,#c00070,#42062e);border-radius:18px 18px 8px 8px;clip-path:polygon(25% 0,75% 0,100% 100%,0 100%)}
+.girl .leg1,.girl .leg2{position:absolute;top:103px;width:6px;height:36px;background:#21121c;border-radius:5px}
+.girl .leg1{left:19px}.girl .leg2{left:31px}
+@keyframes girlMove{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+
+.boy{position:absolute;left:18px;bottom:28px;width:58px;height:145px;animation:boyMove 5.5s cubic-bezier(.65,0,.35,1) forwards}
+.boy .head{position:absolute;left:15px;top:8px;width:30px;height:32px;background:linear-gradient(135deg,#c98d70,#8c5847);border-radius:50%;z-index:3}
+.boy .hair{position:absolute;left:13px;top:2px;width:34px;height:18px;background:#07060a;border-radius:60% 60% 30% 30%;z-index:5}
+.boy .body{position:absolute;left:12px;top:38px;width:38px;height:70px;background:linear-gradient(135deg,#202957,#090d24);border-radius:14px 14px 7px 7px}
+.boy .leg1,.boy .leg2{position:absolute;top:102px;width:9px;height:38px;background:#080b19;border-radius:6px}
+.boy .leg1{left:14px}.boy .leg2{left:31px}
+.boy .arm{position:absolute;left:34px;top:48px;width:43px;height:7px;background:#b77b62;border-radius:10px;transform-origin:left center;z-index:8;animation:armOffer 5.5s ease-in-out forwards}
+@keyframes armOffer{0%,55%{transform:rotate(-15deg)}70%{transform:rotate(-5deg)}100%{transform:rotate(-2deg)}}
+@keyframes boyMove{0%{transform:translateX(0) translateY(0)}40%{transform:translateX(95px) translateY(0)}54%{transform:translateX(115px) translateY(0)}70%,100%{transform:translateX(115px) translateY(24px) scale(.86)}}
+
+.proposeHeart{position:absolute;left:176px;top:75px;z-index:30;font-size:25px;opacity:0;filter:drop-shadow(0 0 5px #ff69b4) drop-shadow(0 0 15px #ff1493) drop-shadow(0 0 30px #ff0080);animation:heartOffer 5.5s ease-in-out forwards}
+@keyframes heartOffer{0%,55%{opacity:0;transform:scale(.2) translateY(10px)}65%{opacity:1;transform:scale(1.3)}75%,100%{opacity:1;transform:scale(1)}}
+
+.miniHeart{position:absolute;color:#ff69b4;font-size:12px;opacity:0;text-shadow:0 0 8px #ff1493,0 0 18px #ff0080;animation:miniFloat 5s ease-in-out infinite}
+.miniHeart:nth-child(1){left:35px;top:80px;animation-delay:.8s}
+.miniHeart:nth-child(2){left:270px;top:65px;animation-delay:1.7s}
+.miniHeart:nth-child(3){left:80px;top:20px;animation-delay:2.4s}
+.miniHeart:nth-child(4){left:235px;top:120px;animation-delay:3s}
+@keyframes miniFloat{0%{opacity:0;transform:translateY(15px) scale(.5)}30%{opacity:.8}100%{opacity:0;transform:translateY(-35px) scale(1.2)}}
+
+.giftContent{position:absolute;z-index:50;left:50%;bottom:4%;transform:translateX(-50%);width:90%;max-width:450px}
+.giftSmall{color:#ff9dcc;font-size:13px;letter-spacing:4px;margin-bottom:10px;text-shadow:0 0 10px #ff1493}
+.giftTitle{color:white;font-size:28px;margin-bottom:7px;text-shadow:0 0 10px #ff69b4,0 0 25px #ff1493,0 0 45px #ff0080}
+.giftSubtitle{color:#ffb6d9;font-size:13px;margin-bottom:18px}
+.openBtn{position:relative;border:none;outline:none;cursor:pointer;padding:15px 32px;border-radius:50px;color:white;font-size:15px;font-weight:bold;letter-spacing:1px;background:linear-gradient(135deg,#ff1493,#ff007f,#c000ff);box-shadow:0 0 10px #ff1493,0 0 25px #ff1493,0 0 50px #ff0080;overflow:hidden;animation:buttonPulse 2s ease-in-out infinite}
+@keyframes buttonPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.openBtn:before{content:"";position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:buttonShine 2.5s infinite}
+@keyframes buttonShine{0%{left:-100%}50%,100%{left:150%}}
+
+#scene{position:relative;width:100%;height:100vh;overflow:hidden;background:radial-gradient(circle at center,#3b001f 0%,#18000f 30%,#060008 65%,#000 100%);opacity:0;visibility:hidden;transition:opacity 1.5s ease}
+.glow{position:absolute;width:400px;height:400px;left:50%;top:38%;transform:translate(-50%,-50%);background:#ff0080;border-radius:50%;filter:blur(140px);opacity:.18;animation:mainGlow 3s ease-in-out infinite alternate}
+@keyframes mainGlow{from{transform:translate(-50%,-50%) scale(.8)}to{transform:translate(-50%,-50%) scale(1.3)}}
+
+#heart{position:absolute;width:100%;height:100%;perspective:1400px;transform-style:preserve-3d}
+.love{position:absolute;transform-style:preserve-3d;white-space:nowrap;pointer-events:none}
+.loveText{color:#ffb5d9;font-size:11px;font-weight:bold;letter-spacing:.5px;text-shadow:0 0 4px #fff,0 0 8px #ff69b4,0 0 15px #ff1493,0 0 30px #ff0080;animation:textGlow 1.5s ease-in-out infinite alternate}
+@keyframes textGlow{from{opacity:.25;filter:brightness(.7)}to{opacity:1;filter:brightness(1.6)}}
+
+/* সোহানা হার্টের ঠিক মাঝখানে */
+.center{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);text-align:center;width:90%;z-index:1000;pointer-events:none}
+.small{color:#ff8fc5;font-size:10px;letter-spacing:3px;margin-bottom:6px;text-shadow:0 0 12px #ff1493}
+.title{font-size:42px;font-weight:800;background:linear-gradient(90deg,#fff,#ffb6d9,#ff1493,#fff,#ffb6d9);background-size:400% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradient 4s linear infinite,titlePulse 1.8s ease-in-out infinite alternate;filter:drop-shadow(0 0 8px #ff1493) drop-shadow(0 0 20px #ff0080)}
+@keyframes gradient{to{background-position:400% center}}
+@keyframes titlePulse{from{transform:scale(.95)}to{transform:scale(1.08)}}
+.subtitle{margin-top:7px;color:#ffd3e8;font-size:12px;letter-spacing:1px;text-shadow:0 0 8px #ff1493}
+.bigHeart{margin:15px auto 0;width:30px;height:30px;background:#ff167f;transform:rotate(-45deg);box-shadow:0 0 10px #ff1493,0 0 25px #ff1493,0 0 50px #ff0080;animation:heartBeat 1s infinite}
+.bigHeart:before,.bigHeart:after{content:"";position:absolute;width:30px;height:30px;background:#ff167f;border-radius:50%}
+.bigHeart:before{top:-15px;left:0}.bigHeart:after{top:0;left:15px}
+@keyframes heartBeat{0%,100%{transform:rotate(-45deg) scale(1)}50%{transform:rotate(-45deg) scale(1.25)}}
+
+.proposal{position:absolute;left:50%;bottom:10vh;transform:translateX(-50%);width:94%;max-width:650px;padding:12px 10px;text-align:center;z-index:2000;color:#ffe6f2;font-size:12px;line-height:1.55;background:linear-gradient(135deg,rgba(255,20,147,.13),rgba(255,0,128,.05),rgba(160,0,255,.09));border:1px solid rgba(255,140,200,.30);border-radius:18px;box-shadow:0 0 20px rgba(255,20,147,.15),inset 0 0 20px rgba(255,20,147,.04);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);animation:proposalGlow 2.5s ease-in-out infinite alternate}
+.proposal:before{content:"";position:absolute;left:15%;right:15%;top:0;height:1px;background:linear-gradient(90deg,transparent,#ff69b4,#fff,#ff1493,transparent);box-shadow:0 0 8px #ff1493}
+.proposal .line{opacity:0;margin:1px 0;text-shadow:0 0 4px #ff69b4,0 0 10px #ff1493;animation:lineAppear 1s ease forwards}
+.proposal .line:before{content:"♥";color:#ff69b4;font-size:8px;margin-right:4px}
+.proposal .line:nth-child(1){animation-delay:.4s}.proposal .line:nth-child(2){animation-delay:1s}.proposal .line:nth-child(3){animation-delay:1.6s}.proposal .line:nth-child(4){animation-delay:2.2s}.proposal .line:nth-child(5){animation-delay:2.8s}.proposal .line:nth-child(6){animation-delay:3.4s}.proposal .line:nth-child(7){animation-delay:4s}
+.signature{margin-top:6px;padding-top:5px;border-top:1px solid rgba(255,130,190,.18);color:#ff9dcc;font-size:14px;font-weight:bold;opacity:0;animation:signatureAppear 1.5s 4.7s forwards;text-shadow:0 0 8px #ff1493,0 0 18px #ff1493}
+@keyframes lineAppear{from{opacity:0;transform:translateY(12px);filter:blur(4px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@keyframes signatureAppear{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+@keyframes proposalGlow{from{box-shadow:0 0 12px rgba(255,20,147,.10)}to{box-shadow:0 0 28px rgba(255,20,147,.20),0 0 50px rgba(255,0,128,.06)}}
+
+.floatHeart{position:absolute;color:#ff4fa3;text-shadow:0 0 8px #ff1493,0 0 18px #ff1493;animation:floatUp linear infinite;pointer-events:none}
+@keyframes floatUp{0%{transform:translateY(110vh) scale(.3) rotate(0deg);opacity:0}15%{opacity:.8}100%{transform:translateY(-20vh) scale(1.3) rotate(360deg);opacity:0}}
+.particle{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;box-shadow:0 0 6px #fff,0 0 12px #ff69b4,0 0 20px #ff1493;animation:twinkle 2s ease-in-out infinite alternate}
+@keyframes twinkle{from{opacity:.1;transform:scale(.5)}to{opacity:1;transform:scale(1.8)}}
+
+@media(max-width:600px){
+.proposeScene{top:5%;transform:translateX(-50%) scale(.65)}
+.giftContent{bottom:3%}.giftSmall{font-size:10px;margin-bottom:7px}.giftTitle{font-size:22px;margin-bottom:5px}.giftSubtitle{font-size:10px;margin-bottom:12px}.openBtn{padding:12px 26px;font-size:13px}
+.center{top:42%}.small{font-size:7px;letter-spacing:2px}.title{font-size:31px}.subtitle{font-size:8.5px;letter-spacing:.4px}.bigHeart{margin-top:10px;width:25px;height:25px}.bigHeart:before,.bigHeart:after{width:25px;height:25px}.bigHeart:before{top:-12px}.bigHeart:after{left:12px}.loveText{font-size:7px}
+.proposal{bottom:11vh;width:95%;padding:8px 6px 7px;font-size:9px;line-height:1.32;border-radius:15px}.proposal .line{margin:0}.proposal .line:before{font-size:6px;margin-right:3px}.signature{margin-top:4px;padding-top:4px;font-size:11px}
+}
+@media(max-width:380px){
+.proposeScene{top:3%;transform:translateX(-50%) scale(.55)}.giftTitle{font-size:20px}.openBtn{padding:11px 23px;font-size:12px}.center{top:42%}.title{font-size:27px}.subtitle{font-size:7.5px}.proposal{bottom:12vh;width:95%;padding:7px 5px 6px;font-size:8.4px;line-height:1.27}.signature{font-size:10.3px;margin-top:3px;padding-top:3px}
+}
+</style>
+</head>
+<body>
+
+<div id="giftScreen">
+<div class="giftGlow"></div>
+
+<div class="proposeScene">
+<div class="ground"></div>
+<div class="miniHeart">♥</div>
+<div class="miniHeart">♡</div>
+<div class="miniHeart">♥</div>
+<div class="miniHeart">♡</div>
+
+<div class="girl">
+<div class="hair"></div><div class="head"></div><div class="body"></div><div class="leg1"></div><div class="leg2"></div>
+</div>
+
+<div class="boy">
+<div class="hair"></div><div class="head"></div><div class="body"></div><div class="arm"></div><div class="leg1"></div><div class="leg2"></div>
+</div>
+
+<div class="proposeHeart">❤️</div>
+</div>
+
+<div class="giftContent">
+<div class="giftSmall">একটি ছোট্ট উপহার</div>
+<div class="giftTitle">তোমার জন্য কিছু আছে ❤️</div>
+<div class="giftSubtitle">উপহারটি খুলতে নিচের বাটনে চাপ দাও</div>
+<button class="openBtn" onclick="openGift()">🎁 Open Your Gift ❤️</button>
+</div>
+</div>
+
+<div id="scene">
+<div class="glow"></div>
+<div id="heart"></div>
+
+<div class="center">
+<div class="small">MADE WITH LOVE FOR</div>
+<div class="title">সোহানা ❤️</div>
+<div class="subtitle">তোমাকে ছাড়া আমার পৃথিবী অসম্পূর্ণ</div>
+<div class="bigHeart"></div>
+</div>
+
+<div class="proposal">
+<div class="line">সোহানা, তোমাকে ছাড়া আমার জীবনটা যেন অসম্পূর্ণ।</div>
+<div class="line">তুমি শুধু আমার ভালোবাসা নও, তুমি আমার সবচেয়ে আপন একজন।</div>
+<div class="line">তোমার হাসি, তোমার অভিমান—সবকিছুই আমার ভীষণ প্রিয়।</div>
+<div class="line">জীবনের প্রতিটি সুখ-দুঃখে আমি তোমাকে পাশে চাই।</div>
+<div class="line">অনেক ভালোবাসি🥺</div>
+<div class="line">সবসময় এভাবে পাশে থেকো</div>
+<div class="line">I LOVE YOU SO MUCH JAN❤️</div>
+<div class="signature">— তোমার SHITHIL ❤️</div>
+</div>
+</div>
+
+<script>
+function openGift(){
+const gift=document.getElementById("giftScreen");
+const scene=document.getElementById("scene");
+gift.style.opacity="0";
+gift.style.transform="scale(1.15)";
+setTimeout(function(){
+gift.style.visibility="hidden";
+scene.style.visibility="visible";
+scene.style.opacity="1";
+},900);
+}
+
+const heart=document.getElementById("heart");
+const total=240;
+
+for(let i=0;i<total;i++){
+const item=document.createElement("div");
+item.className="love";
+const text=document.createElement("div");
+text.className="loveText";
+text.innerHTML="I Love You Sohana ❤️";
+item.appendChild(text);
+heart.appendChild(item);
+}
+
+let time=0;
+
+function animateHeart(){
+time+=.012;
+const items=document.querySelectorAll(".love");
+
+items.forEach(function(item,i){
+const t=(Math.PI*2*i)/total;
+
+const x=16*Math.pow(Math.sin(t),3);
+const y=13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t);
+const size=14;
+const px=x*size;
+const py=-y*size;
+
+const z=Math.sin(time*1.5+i*.035)*70;
+const rotateY=Math.sin(time*.7)*25;
+const rotateX=Math.cos(time*.5)*10;
+const rotateZ=Math.sin(t)*20;
+
+item.style.left="calc(50% + "+px+"px)";
+item.style.top="calc(42% + "+py+"px)";
+
+item.style.transform=
+"translate(-50%,-50%) translateZ("+z+"px) rotateX("+rotateX+"deg) rotateY("+rotateY+"deg) rotateZ("+rotateZ+"deg)";
+
+const depth=(z+70)/140;
+item.style.opacity=.25+depth*.75;
+
+const scale=.6+depth*.45;
+item.querySelector(".loveText").style.transform="scale("+scale+")";
+});
+
+requestAnimationFrame(animateHeart);
+}
+
+animateHeart();
+
+for(let i=0;i<35;i++){
+const h=document.createElement("div");
+h.className="floatHeart";
+h.innerHTML=Math.random()>.5?"♥":"♡";
+h.style.left=Math.random()*100+"%";
+h.style.fontSize=(8+Math.random()*20)+"px";
+h.style.animationDuration=(5+Math.random()*7)+"s";
+h.style.animationDelay=(-Math.random()*8)+"s";
+heart.appendChild(h);
+}
+
+const scene=document.getElementById("scene");
+
+for(let i=0;i<80;i++){
+const p=document.createElement("div");
+p.className="particle";
+p.style.left=Math.random()*100+"%";
+p.style.top=Math.random()*100+"%";
+p.style.animationDelay=Math.random()*2+"s";
+p.style.animationDuration=(1+Math.random()*2)+"s";
+scene.appendChild(p);
+}
+</script>
+
+</body>
+</html>
