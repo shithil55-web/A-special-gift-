@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>একটা ছোট্ট উপহার ❤️</title>
+
+<style>
+
+/* =========================
+   BASIC
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+body{
+    font-family:
+        "Noto Sans Bengali",
+        "SolaimanLipi",
+        Arial,
+        sans-serif;
+
+    background:#020005;
+}
+
+
+/* =========================
+   GIFT SCREEN
+========================= */
+
+#giftScreen{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:9999;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #4b002b 0%,
+            #18000f 35%,
+            #050008 75%,
+            #000 100%
+        );
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+}
+
+
+/* Background glow */
+
+.giftGlow{
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    background:#ff0080;
+
+    border-radius:50%;
+
+    filter:blur(120px);
+
+    opacity:.22;
+
+    animation:
+        giftGlow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes giftGlow{
+
+    from{
+        transform:
+            translate(-50%,-50%)
+            scale(.8);
+
+        opacity:.12;
+    }
+
+    to{
+        transform:
+            translate(-50%,-50%)
+            scale(1.3);
+
+        opacity:.28;
+    }
+}
+
+
+/* Gift content */
+
+.giftContent{
+
+    position:relative;
+
+    z-index:10;
+
+    width:90%;
+
+    max-width:450px;
+}
+
+
+/* Small text */
+
+.giftSmall{
+
+    color:#ff9dcc;
+
+    font-size:13px;
+
+    letter-spacing:4px;
+
+    margin-bottom:20px;
+
+    text-shadow:
+        0 0 10px #ff1493;
+}
+
+
+/* Gift emoji */
+
+.giftIcon{
+
+    font-size:80px;
+
+    display:block;
+
+    margin-bottom:25px;
+
+    filter:
+        drop-shadow(0 0 10px #ff1493)
+        drop-shadow(0 0 30px #ff0080);
+
+    animation:
+        giftBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes giftBounce{
+
+    0%,100%{
+        transform:
+            translateY(0)
+            rotate(-4deg);
+    }
+
+    50%{
+        transform:
+            translateY(-15px)
+            rotate(4deg);
+    }
+}
+
+
+/* Title */
+
+.giftTitle{
+
+    color:white;
+
+    font-size:30px;
+
+    margin-bottom:10px;
+
+    text-shadow:
+        0 0 10px #ff69b4,
+        0 0 25px #ff1493,
+        0 0 45px #ff0080;
+}
+
+.giftSubtitle{
+
+    color:#ffb6d9;
+
+    font-size:14px;
+
+    margin-bottom:30px;
+}
+
+
+/* =========================
+   OPEN BUTTON
+========================= */
+
+.openBtn{
+
+    position:relative;
+
+    border:none;
+
+    outline:none;
+
+    cursor:pointer;
+
+    padding:16px 35px;
+
+    border-radius:50px;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    letter-spacing:1px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff1493,
+            #ff007f,
+            #c000ff
+        );
+
+    box-shadow:
+        0 0 10px #ff1493,
+        0 0 25px #ff1493,
+        0 0 50px #ff0080;
+
+    transition:.3s;
+
+    overflow:hidden;
+}
+
+.openBtn:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:
+        0 0 15px #fff,
+        0 0 30px #ff1493,
+        0 0 70px #ff0080;
+}
+
+.openBtn:active{
+
+    transform:scale(.94);
+}
+
+
+/* Button shine */
+
+.openBtn::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-100%;
+
+    width:60%;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.5),
+            transparent
+        );
+
+    transform:skewX(-20deg);
+
+    animation:
+        buttonShine 2.5s infinite;
+}
+
+@keyframes buttonShine{
+
+    0%{
+        left:-100%;
+    }
+
+    50%,100%{
+        left:150%;
+    }
+}
+
+
+/* =========================
+   MAIN SCENE
+========================= */
+
+#scene{
+
+    position:relative;
+
+    width:100%;
+    height:100vh;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #3b001f 0%,
+            #18000f 30%,
+            #060008 65%,
+            #000 100%
+        );
+}
+
+
+/* Main glow */
+
+.glow{
+
+    position:absolute;
+
+    width:380px;
+    height:380px;
+
+    left:50%;
+    top:43%;
+
+    transform:
+        translate(-50%,-50%);
+
+    background:#ff0080;
+
+    border-radius:50%;
+
+    filter:blur(130px);
+
+    opacity:.18;
+
+    animation:
+        bgGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes bgGlow{
+
+    from{
+        transform:
+            translate(-50%,-50%)
+            scale(.8);
+
+        opacity:.12;
+    }
+
+    to{
+        transform:
+            translate(-50%,-50%)
+            scale(1.3);
+
+        opacity:.25;
+    }
+}
+
+
+/* =========================
+   HEART
+========================= */
+
+#heart{
+
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    perspective:1200px;
+
+    transform-style:preserve-3d;
+}
+
+
+.love{
+
+    position:absolute;
+
+    transform-style:preserve-3d;
+
+    white-space:nowrap;
+
+    pointer-events:none;
+}
+
+
+.loveText{
+
+    color:#ffb5d9;
+
+    font-size:11px;
+
+    font-weight:bold;
+
+    letter-spacing:.5px;
+
+    text-shadow:
+        0 0 4px #fff,
+        0 0 8px #ff69b4,
+        0 0 15px #ff1493,
+        0 0 30px #ff0080;
+
+    animation:
+        textGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow{
+
+    from{
+        opacity:.3;
+        filter:brightness(.8);
+    }
+
+    to{
+        opacity:1;
+        filter:brightness(1.5);
+    }
+}
+
+
+/* =========================
+   CENTER
+========================= */
+
+.center{
+
+    position:absolute;
+
+    left:50%;
+    top:42%;
+
+    transform:
+        translate(-50%,-50%);
+
+    text-align:center;
+
+    z-index:1000;
+
+    width:90%;
+
+    pointer-events:none;
+}
+
+
+.small{
+
+    color:#ff8fc5;
+
+    font-size:11px;
+
+    letter-spacing:4px;
+
+    margin-bottom:8px;
+
+    text-shadow:
+        0 0 12px #ff1493;
+}
+
+
+.title{
+
+    font-size:42px;
+
+    font-weight:800;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #ffb6d9,
+            #ff1493,
+            #fff
+        );
+
+    background-size:300% auto;
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+
+    animation:
+        gradient 4s linear infinite,
+        titlePulse 1.8s ease-in-out infinite alternate;
+
+    filter:
+        drop-shadow(0 0 8px #ff1493)
+        drop-shadow(0 0 20px #ff0080);
+}
+
+@keyframes gradient{
+
+    to{
+        background-position:
+            300% center;
+    }
+}
+
+@keyframes titlePulse{
+
+    from{
+        transform:scale(.95);
+    }
+
+    to{
+        transform:scale(1.08);
+    }
+}
+
+
+.subtitle{
+
+    margin-top:8px;
+
+    color:#ffd3e8;
+
+    font-size:13px;
+
+    letter-spacing:2px;
+
+    text-shadow:
+        0 0 8px #ff1493,
+        0 0 18px #ff1493;
+}
+
+
+/* =========================
+   BIG HEART
+========================= */
+
+.bigHeart{
+
+    margin:17px auto 0;
+
+    width:32px;
+    height:32px;
+
+    background:#ff167f;
+
+    transform:
+        rotate(-45deg);
+
+    box-shadow:
+        0 0 10px #ff1493,
+        0 0 25px #ff1493,
+        0 0 50px #ff0080;
+
+    animation:
+        heartBeat 1s infinite;
+}
+
+.bigHeart:before,
+.bigHeart:after{
+
+    content:"";
+
+    position:absolute;
+
+    width:32px;
+    height:32px;
+
+    background:#ff167f;
+
+    border-radius:50%;
+}
+
+.bigHeart:before{
+
+    top:-16px;
+    left:0;
+}
+
+.bigHeart:after{
+
+    top:0;
+    left:16px;
+}
+
+@keyframes heartBeat{
+
+    0%,100%{
+        transform:
+            rotate(-45deg)
+            scale(1);
+    }
+
+    50%{
+        transform:
+            rotate(-45deg)
+            scale(1.22);
+    }
+}
+
+
+/* =========================
+   PROPOSAL
+========================= */
+
+.proposal{
+
+    position:absolute;
+
+    left:50%;
+    bottom:24px;
+
+    transform:
+        translateX(-50%);
+
+    width:92%;
+    max-width:650px;
+
+    text-align:center;
+
+    z-index:2000;
+
+    color:#ffe6f2;
+
+    font-size:13px;
+
+    line-height:1.8;
+
+    text-shadow:
+        0 0 5px #ff69b4,
+        0 0 12px #ff1493,
+        0 0 22px #ff0080;
+
+    animation:
+        proposalGlow 2s ease-in-out infinite alternate;
+}
+
+
+.proposal .line{
+
+    opacity:0;
+
+    animation:
+        lineAppear 1s forwards;
+}
+
+.proposal .line:nth-child(1){
+    animation-delay:.5s;
+}
+
+.proposal .line:nth-child(2){
+    animation-delay:1.2s;
+}
+
+.proposal .line:nth-child(3){
+    animation-delay:1.9s;
+}
+
+.proposal .line:nth-child(4){
+    animation-delay:2.6s;
+}
+
+.proposal .line:nth-child(5){
+    animation-delay:3.3s;
+}
+
+.proposal .line:nth-child(6){
+    animation-delay:4s;
+}
+
+.proposal .line:nth-child(7){
+    animation-delay:4.7s;
+}
+
+
+.signature{
+
+    margin-top:7px;
+
+    color:#ff8fc5;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    opacity:0;
+
+    animation:
+        signatureAppear 1.5s 5.3s forwards;
+
+    text-shadow:
+        0 0 8px #ff1493,
+        0 0 18px #ff1493;
+}
+
+
+@keyframes lineAppear{
+
+    from{
+        opacity:0;
+        transform:
+            translateY(12px);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            translateY(0);
+    }
+}
+
+@keyframes signatureAppear{
+
+    from{
+        opacity:0;
+        transform:
+            scale(.7);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            scale(1);
+    }
+}
+
+@keyframes proposalGlow{
+
+    from{
+        filter:brightness(.85);
+    }
+
+    to{
+        filter:brightness(1.2);
+    }
+}
+
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+.floatHeart{
+
+    position:absolute;
+
+    color:#ff4fa3;
+
+    text-shadow:
+        0 0 8px #ff1493,
+        0 0 18px #ff1493;
+
+    animation:
+        floatUp linear infinite;
+
+    pointer-events:none;
+}
+
+@keyframes floatUp{
+
+    0%{
+        transform:
+            translateY(110vh)
+            scale(.3)
+            rotate(0deg);
+
+        opacity:0;
+    }
+
+    15%{
+        opacity:.8;
+    }
+
+    100%{
+        transform:
+            translateY(-20vh)
+            scale(1.3)
+            rotate(360deg);
+
+        opacity:0;
+    }
+}
+
+
+/* =========================
+   PARTICLES
+========================= */
+
+.particle{
+
+    position:absolute;
+
+    width:3px;
+    height:3px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    box-shadow:
+        0 0 6px #fff,
+        0 0 12px #ff69b4,
+        0 0 20px #ff1493;
+
+    animation:
+        twinkle 2s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle{
+
+    from{
+        opacity:.1;
+        transform:scale(.5);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1.8);
+    }
+}
+
+
+/* =========================
+   HIDDEN MAIN SCREEN
+========================= */
+
+#scene{
+    opacity:0;
+    visibility:hidden;
+
+    transition:
+        opacity 1.5s ease;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .giftTitle{
+        font-size:27px;
+    }
+
+    .giftIcon{
+        font-size:70px;
+    }
+
+    .title{
+        font-size:34px;
+    }
+
+    .loveText{
+        font-size:8px;
+    }
+
+    .proposal{
+        font-size:11px;
+        line-height:1.65;
+        bottom:15px;
+    }
+
+    .small{
+        font-size:9px;
+        letter-spacing:3px;
+    }
+
+    .subtitle{
+        font-size:10px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =================================
+     GIFT OPEN SCREEN
+================================= -->
+
+<div id="giftScreen">
+
+    <div class="giftGlow"></div>
+
+    <div class="giftContent">
+
+        <div class="giftSmall">
+            একটি ছোট্ট উপহার
+        </div>
+
+        <div class="giftIcon">
+            🎁
+        </div>
+
+        <div class="giftTitle">
+            তোমার জন্য কিছু আছে ❤️
+        </div>
+
+        <div class="giftSubtitle">
+            উপহারটি খুলতে নিচের বাটনে চাপ দাও
+        </div>
+
+        <button
+            class="openBtn"
+            onclick="openGift()">
+
+            🎁 Open Your Gift ❤️
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =================================
+     MAIN ANIMATION
+================================= -->
+
+<div id="scene">
+
+    <div class="glow"></div>
+
+    <div id="heart"></div>
+
+
+    <!-- CENTER -->
+
+    <div class="center">
+
+        <div class="small">
+            MADE WITH LOVE FOR
+        </div>
+
+        <div class="title">
+            সোহানা ❤️
+        </div>
+
+        <div class="subtitle">
+            তোমাকে ছাড়া আমার পৃথিবী অসম্পূর্ণ
+        </div>
+
+        <div class="bigHeart"></div>
+
+    </div>
+
+
+
+    <!-- PROPOSAL -->
+
+    <div class="proposal">
+
+        <div class="line">
+            সোহানা, তোমাকে ছাড়া আমার জীবনটা যেন অসম্পূর্ণ।
+        </div>
+
+        <div class="line">
+            তুমি শুধু আমার ভালোবাসা নও, তুমি আমার সবচেয়ে আপন একজন।
+        </div>
+
+        <div class="line">
+            তোমার হাসি, তোমার অভিমান—সবকিছুই আমার ভীষণ প্রিয়।
+        </div>
+
+        <div class="line">
+            জীবনের প্রতিটি সুখ-দুঃখে আমি তোমাকে পাশে চাই।
+        </div>
+
+        <div class="line">
+            অনেক ভালোবাসি🥺
+        </div>
+
+        <div class="line">
+            সবসময় এভাবে পাশে থেকো
+        </div>
+
+        <div class="line">
+            I LOVE YOU SO MUCH JAN❤️
+        </div>
+
+        <div class="signature">
+            — তোমার SHITHIL ❤️
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+/* =================================
+   OPEN GIFT
+================================= */
+
+function openGift(){
+
+    const gift =
+        document.getElementById("giftScreen");
+
+    const scene =
+        document.getElementById("scene");
+
+
+    /* Hide gift */
+
+    gift.style.opacity="0";
+
+    gift.style.transform=
+        "scale(1.15)";
+
+
+    /* Show animation */
+
+    setTimeout(()=>{
+
+        gift.style.visibility="hidden";
+
+        scene.style.visibility="visible";
+
+        scene.style.opacity="1";
+
+    },900);
+
+}
+
+
+
+/* =================================
+   CREATE HEART TEXT
+================================= */
+
+const heart =
+    document.getElementById("heart");
+
+const total=240;
+
+
+for(let i=0;i<total;i++){
+
+    const item=
+        document.createElement("div");
+
+    item.className="love";
+
+
+    const text=
+        document.createElement("div");
+
+    text.className="loveText";
+
+    text.innerHTML=
+        "I Love You Sohana ❤️";
+
+
+    item.appendChild(text);
+
+    heart.appendChild(item);
+}
+
+
+
+/* =================================
+   3D HEART ANIMATION
+================================= */
+
+let time=0;
+
+
+function animateHeart(){
+
+    time+=.012;
+
+
+    const items=
+        document.querySelectorAll(".love");
+
+
+    items.forEach((item,i)=>{
+
+
+        const t=
+            (Math.PI*2*i)/total;
+
+
+        /* Heart equation */
+
+        const x=
+            16*Math.pow(
+                Math.sin(t),3
+            );
+
+
+        const y=
+            13*Math.cos(t)
+            -5*Math.cos(2*t)
+            -2*Math.cos(3*t)
+            -Math.cos(4*t);
+
+
+        const size=14;
+
+
+        const px=x*size;
+        const py=-y*size;
+
+
+        /* 3D depth */
+
+        const z=
+            Math.sin(
+                time*1.5+i*.035
+            )*70;
+
+
+        const rotateY=
+            Math.sin(time*.7)*25;
+
+
+        const rotateX=
+            Math.cos(time*.5)*10;
+
+
+        const rotateZ=
+            Math.sin(t)*20;
+
+
+        item.style.left=
+            `calc(50% + ${px}px)`;
+
+
+        item.style.top=
+            `calc(42% + ${py}px)`;
+
+
+        item.style.transform=
+            `translate(-50%,-50%)
+             translateZ(${z}px)
+             rotateX(${rotateX}deg)
+             rotateY(${rotateY}deg)
+             rotateZ(${rotateZ}deg)`;
+
+
+        const depth=
+            (z+70)/140;
+
+
+        item.style.opacity=
+            .25+(depth*.75);
+
+
+        const scale=
+            .6+(depth*.45);
+
+
+        item.querySelector(
+            ".loveText"
+        ).style.transform=
+            `scale(${scale})`;
+
+    });
+
+
+    requestAnimationFrame(
+        animateHeart
+    );
+
+}
+
+
+animateHeart();
+
+
+
+/* =================================
+   FLOATING HEARTS
+================================= */
+
+for(let i=0;i<35;i++){
+
+    const h=
+        document.createElement("div");
+
+
+    h.className=
+        "floatHeart";
+
+
+    h.innerHTML=
+        Math.random()>.5
+        ?"♥"
+        :"♡";
+
+
+    h.style.left=
+        Math.random()*100+"%";
+
+
+    h.style.fontSize=
+        (8+Math.random()*20)+"px";
+
+
+    h.style.animationDuration=
+        (5+Math.random()*7)+"s";
+
+
+    h.style.animationDelay=
+        (-Math.random()*8)+"s";
+
+
+    heart.appendChild(h);
+
+}
+
+
+
+/* =================================
+   STAR PARTICLES
+================================= */
+
+const scene=
+    document.getElementById("scene");
+
+
+for(let i=0;i<70;i++){
+
+    const p=
+        document.createElement("div");
+
+
+    p.className=
+        "particle";
+
+
+    p.style.left=
+        Math.random()*100+"%";
+
+
+    p.style.top=
+        Math.random()*100+"%";
+
+
+    p.style.animationDelay=
+        Math.random()*2+"s";
+
+
+    p.style.animationDuration=
+        (1+Math.random()*2)+"s";
+
+
+    scene.appendChild(p);
+
+}
+
+</script>
+
+</body>
+</html>
