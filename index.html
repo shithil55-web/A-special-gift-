@@ -8,9 +8,9 @@
 
 <style>
 
-/* =========================
+/* =====================================================
    BASIC
-========================= */
+===================================================== */
 
 *{
     margin:0;
@@ -35,31 +35,31 @@ body{
 }
 
 
-/* =========================
-   GIFT SCREEN
-========================= */
+/* =====================================================
+   DARK ROMANTIC GIFT SCREEN
+===================================================== */
 
 #giftScreen{
 
     position:fixed;
-
     inset:0;
 
     z-index:9999;
 
     display:flex;
-
     justify-content:center;
     align-items:center;
 
     text-align:center;
 
+    overflow:hidden;
+
     background:
         radial-gradient(
-            circle at center,
-            #4b002b 0%,
-            #18000f 35%,
-            #050008 75%,
+            ellipse at 50% 32%,
+            rgba(105,0,55,.48) 0%,
+            rgba(38,0,27,.78) 34%,
+            rgba(9,0,14,.96) 68%,
             #000 100%
         );
 
@@ -69,17 +69,124 @@ body{
 }
 
 
-/* Background glow */
+/* Romantic moving aura */
+
+#giftScreen::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-20%;
+
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            rgba(255,20,147,.12),
+            transparent 20%
+        ),
+
+        radial-gradient(
+            circle at 80% 25%,
+            rgba(120,0,255,.10),
+            transparent 22%
+        ),
+
+        radial-gradient(
+            circle at 50% 80%,
+            rgba(255,0,100,.08),
+            transparent 25%
+        );
+
+    filter:blur(35px);
+
+    animation:
+        romanticAura
+        8s ease-in-out
+        infinite alternate;
+
+    pointer-events:none;
+}
+
+@keyframes romanticAura{
+
+    from{
+        transform:scale(1);
+        opacity:.55;
+    }
+
+    to{
+        transform:scale(1.15);
+        opacity:1;
+    }
+}
+
+
+/* Soft moonlight */
+
+#giftScreen::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:145px;
+    height:145px;
+
+    top:7%;
+    right:11%;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,225,242,.20) 0%,
+            rgba(255,120,190,.08) 35%,
+            transparent 72%
+        );
+
+    box-shadow:
+        0 0 45px rgba(255,100,180,.08),
+        0 0 110px rgba(255,20,147,.05);
+
+    filter:blur(2px);
+
+    animation:
+        moonGlow
+        4s ease-in-out
+        infinite alternate;
+
+    pointer-events:none;
+}
+
+@keyframes moonGlow{
+
+    from{
+        transform:scale(.9);
+        opacity:.5;
+    }
+
+    to{
+        transform:scale(1.1);
+        opacity:1;
+    }
+}
+
+
+/* =====================================================
+   GIFT BACKGROUND GLOW
+===================================================== */
 
 .giftGlow{
 
     position:absolute;
 
-    width:300px;
-    height:300px;
+    width:340px;
+    height:340px;
 
     left:50%;
-    top:50%;
+    top:39%;
 
     transform:
         translate(-50%,-50%);
@@ -88,12 +195,12 @@ body{
 
     border-radius:50%;
 
-    filter:blur(120px);
+    filter:blur(130px);
 
-    opacity:.22;
+    opacity:.18;
 
     animation:
-        giftGlow 2.5s ease-in-out infinite alternate;
+        giftGlow 3s ease-in-out infinite alternate;
 }
 
 @keyframes giftGlow{
@@ -103,7 +210,7 @@ body{
             translate(-50%,-50%)
             scale(.8);
 
-        opacity:.12;
+        opacity:.10;
     }
 
     to{
@@ -111,26 +218,636 @@ body{
             translate(-50%,-50%)
             scale(1.3);
 
-        opacity:.28;
+        opacity:.26;
     }
 }
 
 
-/* Gift content */
+/* =====================================================
+   CINEMATIC PROPOSAL SCENE
+===================================================== */
 
-.giftContent{
+.proposeScene{
 
-    position:relative;
+    position:absolute;
 
-    z-index:10;
+    left:50%;
+    top:19%;
 
-    width:90%;
+    width:330px;
+    height:240px;
 
-    max-width:450px;
+    transform:
+        translateX(-50%);
+
+    z-index:20;
+
+    filter:
+        drop-shadow(
+            0 0 15px
+            rgba(255,20,147,.12)
+        );
 }
 
 
-/* Small text */
+/* Ground light */
+
+.ground{
+
+    position:absolute;
+
+    left:50%;
+    bottom:18px;
+
+    width:270px;
+    height:26px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(255,20,147,.30),
+            transparent 70%
+        );
+
+    border-radius:50%;
+
+    filter:blur(13px);
+
+    animation:
+        groundGlow
+        3s ease-in-out
+        infinite alternate;
+}
+
+@keyframes groundGlow{
+
+    from{
+        opacity:.30;
+
+        transform:
+            translateX(-50%)
+            scale(.85);
+    }
+
+    to{
+        opacity:.75;
+
+        transform:
+            translateX(-50%)
+            scale(1.1);
+    }
+}
+
+
+/* =====================================================
+   GIRL - MINIMAL SILHOUETTE
+===================================================== */
+
+.girl{
+
+    position:absolute;
+
+    right:38px;
+    bottom:28px;
+
+    width:55px;
+    height:145px;
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            rgba(255,105,180,.38)
+        );
+
+    animation:
+        girlBreath
+        3s ease-in-out
+        infinite;
+}
+
+
+/* Hair */
+
+.girl .hair{
+
+    position:absolute;
+
+    left:8px;
+    top:-2px;
+
+    width:40px;
+    height:52px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #07040a,
+            #24101d
+        );
+
+    border-radius:
+        50% 50% 45% 45%;
+
+    box-shadow:
+        0 0 10px
+        rgba(255,20,147,.18);
+
+    z-index:3;
+}
+
+
+/* Face */
+
+.girl .head{
+
+    position:absolute;
+
+    left:15px;
+    top:8px;
+
+    width:29px;
+    height:32px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffd0c0,
+            #d9968a
+        );
+
+    border-radius:50%;
+
+    z-index:2;
+
+    opacity:.9;
+}
+
+
+/* Dress */
+
+.girl .body{
+
+    position:absolute;
+
+    left:10px;
+    top:38px;
+
+    width:36px;
+    height:73px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #c00070,
+            #42062e
+        );
+
+    border-radius:
+        18px 18px 8px 8px;
+
+    clip-path:
+        polygon(
+            25% 0,
+            75% 0,
+            100% 100%,
+            0 100%
+        );
+
+    box-shadow:
+        0 0 16px
+        rgba(255,20,147,.20);
+}
+
+
+/* Legs */
+
+.girl .leg1,
+.girl .leg2{
+
+    position:absolute;
+
+    top:103px;
+
+    width:6px;
+    height:36px;
+
+    background:#21121c;
+
+    border-radius:5px;
+}
+
+.girl .leg1{
+    left:19px;
+}
+
+.girl .leg2{
+    left:31px;
+}
+
+
+@keyframes girlBreath{
+
+    0%,100%{
+        transform:
+            translateY(0);
+    }
+
+    50%{
+        transform:
+            translateY(-2px);
+    }
+}
+
+
+/* =====================================================
+   BOY - MINIMAL SILHOUETTE
+===================================================== */
+
+.boy{
+
+    position:absolute;
+
+    left:18px;
+    bottom:28px;
+
+    width:58px;
+    height:145px;
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            rgba(100,100,255,.30)
+        );
+
+    animation:
+        boyProposal
+        5.5s
+        cubic-bezier(.65,0,.35,1)
+        forwards;
+}
+
+
+/* Head */
+
+.boy .head{
+
+    position:absolute;
+
+    left:15px;
+    top:8px;
+
+    width:30px;
+    height:32px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #c98d70,
+            #8c5847
+        );
+
+    border-radius:50%;
+
+    z-index:3;
+}
+
+
+/* Hair */
+
+.boy .hair{
+
+    position:absolute;
+
+    left:13px;
+    top:2px;
+
+    width:34px;
+    height:18px;
+
+    background:#07060a;
+
+    border-radius:
+        60% 60% 30% 30%;
+
+    z-index:5;
+}
+
+
+/* Body */
+
+.boy .body{
+
+    position:absolute;
+
+    left:12px;
+    top:38px;
+
+    width:38px;
+    height:70px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #202957,
+            #090d24
+        );
+
+    border-radius:
+        14px 14px 7px 7px;
+
+    box-shadow:
+        0 0 15px
+        rgba(80,100,255,.16);
+}
+
+
+/* Legs */
+
+.boy .leg1,
+.boy .leg2{
+
+    position:absolute;
+
+    top:102px;
+
+    width:9px;
+    height:38px;
+
+    background:#080b19;
+
+    border-radius:6px;
+}
+
+.boy .leg1{
+    left:14px;
+}
+
+.boy .leg2{
+    left:31px;
+}
+
+
+/* Arm */
+
+.boy .arm{
+
+    position:absolute;
+
+    left:34px;
+    top:48px;
+
+    width:43px;
+    height:7px;
+
+    background:#b77b62;
+
+    border-radius:10px;
+
+    transform-origin:left center;
+
+    transform:
+        rotate(-15deg);
+
+    z-index:8;
+
+    animation:
+        armOffer
+        5.5s
+        ease-in-out
+        forwards;
+}
+
+@keyframes armOffer{
+
+    0%,55%{
+        transform:
+            rotate(-15deg);
+    }
+
+    70%{
+        transform:
+            rotate(-5deg);
+    }
+
+    100%{
+        transform:
+            rotate(-2deg);
+    }
+}
+
+
+/* =====================================================
+   BOY WALKS + KNEELS
+===================================================== */
+
+@keyframes boyProposal{
+
+    0%{
+
+        transform:
+            translateX(0)
+            translateY(0);
+    }
+
+    40%{
+
+        transform:
+            translateX(95px)
+            translateY(0);
+    }
+
+    54%{
+
+        transform:
+            translateX(115px)
+            translateY(0);
+    }
+
+    70%{
+
+        transform:
+            translateX(115px)
+            translateY(24px)
+            scale(.86);
+    }
+
+    100%{
+
+        transform:
+            translateX(115px)
+            translateY(24px)
+            scale(.86);
+    }
+}
+
+
+/* =====================================================
+   GLOWING HEART OFFER
+===================================================== */
+
+.proposeHeart{
+
+    position:absolute;
+
+    left:176px;
+    top:75px;
+
+    z-index:30;
+
+    font-size:25px;
+
+    opacity:0;
+
+    filter:
+        drop-shadow(
+            0 0 5px #ff69b4
+        )
+        drop-shadow(
+            0 0 15px #ff1493
+        )
+        drop-shadow(
+            0 0 30px #ff0080
+        );
+
+    animation:
+        heartOffer
+        5.5s
+        ease-in-out
+        forwards;
+}
+
+@keyframes heartOffer{
+
+    0%,55%{
+
+        opacity:0;
+
+        transform:
+            scale(.2)
+            translateY(10px);
+    }
+
+    65%{
+
+        opacity:1;
+
+        transform:
+            scale(1.3)
+            translateY(0);
+    }
+
+    75%,100%{
+
+        opacity:1;
+
+        transform:
+            scale(1)
+            translateY(0);
+    }
+}
+
+
+/* =====================================================
+   FLOATING ROMANTIC HEARTS
+===================================================== */
+
+.miniHeart{
+
+    position:absolute;
+
+    color:#ff69b4;
+
+    font-size:12px;
+
+    opacity:0;
+
+    text-shadow:
+        0 0 8px #ff1493,
+        0 0 18px #ff0080;
+
+    animation:
+        cinematicFloat
+        5s
+        ease-in-out
+        infinite;
+}
+
+.miniHeart:nth-child(1){
+    left:35px;
+    top:80px;
+    animation-delay:.8s;
+}
+
+.miniHeart:nth-child(2){
+    left:270px;
+    top:65px;
+    animation-delay:1.7s;
+}
+
+.miniHeart:nth-child(3){
+    left:80px;
+    top:20px;
+    animation-delay:2.4s;
+}
+
+.miniHeart:nth-child(4){
+    left:235px;
+    top:120px;
+    animation-delay:3s;
+}
+
+@keyframes cinematicFloat{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+            translateY(15px)
+            scale(.5);
+    }
+
+    25%{
+        opacity:.8;
+    }
+
+    65%{
+        opacity:.7;
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:
+            translateY(-35px)
+            scale(1.2);
+    }
+}
+
+
+/* =====================================================
+   GIFT CONTENT
+===================================================== */
+
+.giftContent{
+
+    position:absolute;
+
+    z-index:50;
+
+    left:50%;
+    bottom:5.5%;
+
+    transform:
+        translateX(-50%);
+
+    width:90%;
+    max-width:450px;
+}
 
 .giftSmall{
 
@@ -140,94 +857,79 @@ body{
 
     letter-spacing:4px;
 
-    margin-bottom:20px;
+    margin-bottom:12px;
 
     text-shadow:
         0 0 10px #ff1493;
 }
 
-
-/* Gift emoji */
-
-.giftIcon{
-
-    font-size:80px;
-
-    display:block;
-
-    margin-bottom:25px;
-
-    filter:
-        drop-shadow(0 0 10px #ff1493)
-        drop-shadow(0 0 30px #ff0080);
-
-    animation:
-        giftBounce 1.5s ease-in-out infinite;
-}
-
-@keyframes giftBounce{
-
-    0%,100%{
-        transform:
-            translateY(0)
-            rotate(-4deg);
-    }
-
-    50%{
-        transform:
-            translateY(-15px)
-            rotate(4deg);
-    }
-}
-
-
-/* Title */
-
 .giftTitle{
 
     color:white;
 
-    font-size:30px;
+    font-size:28px;
 
-    margin-bottom:10px;
+    margin-bottom:8px;
 
     text-shadow:
         0 0 10px #ff69b4,
         0 0 25px #ff1493,
         0 0 45px #ff0080;
+
+    animation:
+        giftTitleGlow
+        2.5s
+        ease-in-out
+        infinite alternate;
+}
+
+@keyframes giftTitleGlow{
+
+    from{
+        text-shadow:
+            0 0 8px #ff69b4,
+            0 0 20px #ff1493;
+    }
+
+    to{
+        text-shadow:
+            0 0 12px #fff,
+            0 0 30px #ff1493,
+            0 0 50px #ff0080;
+    }
 }
 
 .giftSubtitle{
 
     color:#ffb6d9;
 
-    font-size:14px;
+    font-size:13px;
 
-    margin-bottom:30px;
+    margin-bottom:20px;
 }
 
 
-/* =========================
+/* =====================================================
    OPEN BUTTON
-========================= */
+===================================================== */
 
 .openBtn{
 
     position:relative;
 
     border:none;
-
     outline:none;
 
     cursor:pointer;
 
-    padding:16px 35px;
+    padding:
+        15px 32px;
 
     border-radius:50px;
 
     color:white;
 
-    font-size:16px;
+    font-size:15px;
 
     font-weight:bold;
 
@@ -246,28 +948,25 @@ body{
         0 0 25px #ff1493,
         0 0 50px #ff0080;
 
-    transition:.3s;
-
     overflow:hidden;
+
+    animation:
+        buttonPulse
+        2s
+        ease-in-out
+        infinite;
 }
 
-.openBtn:hover{
+@keyframes buttonPulse{
 
-    transform:scale(1.08);
+    0%,100%{
+        transform:scale(1);
+    }
 
-    box-shadow:
-        0 0 15px #fff,
-        0 0 30px #ff1493,
-        0 0 70px #ff0080;
+    50%{
+        transform:scale(1.05);
+    }
 }
-
-.openBtn:active{
-
-    transform:scale(.94);
-}
-
-
-/* Button shine */
 
 .openBtn::before{
 
@@ -285,14 +984,17 @@ body{
         linear-gradient(
             90deg,
             transparent,
-            rgba(255,255,255,.5),
+            rgba(255,255,255,.55),
             transparent
         );
 
-    transform:skewX(-20deg);
+    transform:
+        skewX(-20deg);
 
     animation:
-        buttonShine 2.5s infinite;
+        buttonShine
+        2.5s
+        infinite;
 }
 
 @keyframes buttonShine{
@@ -307,9 +1009,9 @@ body{
 }
 
 
-/* =========================
+/* =====================================================
    MAIN SCENE
-========================= */
+===================================================== */
 
 #scene{
 
@@ -328,6 +1030,13 @@ body{
             #060008 65%,
             #000 100%
         );
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:
+        opacity 1.5s ease;
 }
 
 
@@ -337,11 +1046,11 @@ body{
 
     position:absolute;
 
-    width:380px;
-    height:380px;
+    width:400px;
+    height:400px;
 
     left:50%;
-    top:43%;
+    top:36%;
 
     transform:
         translate(-50%,-50%);
@@ -350,17 +1059,21 @@ body{
 
     border-radius:50%;
 
-    filter:blur(130px);
+    filter:blur(140px);
 
     opacity:.18;
 
     animation:
-        bgGlow 3s ease-in-out infinite alternate;
+        bgGlow
+        3s
+        ease-in-out
+        infinite alternate;
 }
 
 @keyframes bgGlow{
 
     from{
+
         transform:
             translate(-50%,-50%)
             scale(.8);
@@ -369,18 +1082,19 @@ body{
     }
 
     to{
+
         transform:
             translate(-50%,-50%)
             scale(1.3);
 
-        opacity:.25;
+        opacity:.27;
     }
 }
 
 
-/* =========================
-   HEART
-========================= */
+/* =====================================================
+   3D HEART
+===================================================== */
 
 #heart{
 
@@ -389,11 +1103,10 @@ body{
     width:100%;
     height:100%;
 
-    perspective:1200px;
+    perspective:1400px;
 
     transform-style:preserve-3d;
 }
-
 
 .love{
 
@@ -405,7 +1118,6 @@ body{
 
     pointer-events:none;
 }
-
 
 .loveText{
 
@@ -424,33 +1136,36 @@ body{
         0 0 30px #ff0080;
 
     animation:
-        textGlow 1.5s ease-in-out infinite alternate;
+        textGlow
+        1.5s
+        ease-in-out
+        infinite alternate;
 }
 
 @keyframes textGlow{
 
     from{
-        opacity:.3;
-        filter:brightness(.8);
+        opacity:.25;
+        filter:brightness(.7);
     }
 
     to{
         opacity:1;
-        filter:brightness(1.5);
+        filter:brightness(1.6);
     }
 }
 
 
-/* =========================
-   CENTER
-========================= */
+/* =====================================================
+   CENTER TITLE
+===================================================== */
 
 .center{
 
     position:absolute;
 
     left:50%;
-    top:42%;
+    top:29%;
 
     transform:
         translate(-50%,-50%);
@@ -463,7 +1178,6 @@ body{
 
     pointer-events:none;
 }
-
 
 .small{
 
@@ -479,7 +1193,6 @@ body{
         0 0 12px #ff1493;
 }
 
-
 .title{
 
     font-size:42px;
@@ -492,10 +1205,11 @@ body{
             #fff,
             #ffb6d9,
             #ff1493,
-            #fff
+            #fff,
+            #ffb6d9
         );
 
-    background-size:300% auto;
+    background-size:400% auto;
 
     -webkit-background-clip:text;
     background-clip:text;
@@ -503,19 +1217,30 @@ body{
     color:transparent;
 
     animation:
-        gradient 4s linear infinite,
-        titlePulse 1.8s ease-in-out infinite alternate;
+        gradient
+        4s
+        linear
+        infinite,
+
+        titlePulse
+        1.8s
+        ease-in-out
+        infinite alternate;
 
     filter:
-        drop-shadow(0 0 8px #ff1493)
-        drop-shadow(0 0 20px #ff0080);
+        drop-shadow(
+            0 0 8px #ff1493
+        )
+        drop-shadow(
+            0 0 20px #ff0080
+        );
 }
 
 @keyframes gradient{
 
     to{
         background-position:
-            300% center;
+            400% center;
     }
 }
 
@@ -530,7 +1255,6 @@ body{
     }
 }
 
-
 .subtitle{
 
     margin-top:8px;
@@ -544,16 +1268,34 @@ body{
     text-shadow:
         0 0 8px #ff1493,
         0 0 18px #ff1493;
+
+    animation:
+        subtitleGlow
+        2s
+        ease-in-out
+        infinite alternate;
+}
+
+@keyframes subtitleGlow{
+
+    from{
+        opacity:.65;
+    }
+
+    to{
+        opacity:1;
+    }
 }
 
 
-/* =========================
+/* =====================================================
    BIG HEART
-========================= */
+===================================================== */
 
 .bigHeart{
 
-    margin:17px auto 0;
+    margin:
+        17px auto 0;
 
     width:32px;
     height:32px;
@@ -569,7 +1311,9 @@ body{
         0 0 50px #ff0080;
 
     animation:
-        heartBeat 1s infinite;
+        heartBeat
+        1s
+        infinite;
 }
 
 .bigHeart:before,
@@ -602,35 +1346,40 @@ body{
 @keyframes heartBeat{
 
     0%,100%{
+
         transform:
             rotate(-45deg)
             scale(1);
     }
 
     50%{
+
         transform:
             rotate(-45deg)
-            scale(1.22);
+            scale(1.25);
     }
 }
 
 
-/* =========================
-   PROPOSAL
-========================= */
+/* =====================================================
+   PROPOSAL MESSAGE
+===================================================== */
 
 .proposal{
 
     position:absolute;
 
     left:50%;
-    bottom:24px;
+    bottom:2.5vh;
 
     transform:
         translateX(-50%);
 
-    width:92%;
+    width:94%;
     max-width:650px;
+
+    padding:
+        12px 10px 10px;
 
     text-align:center;
 
@@ -638,123 +1387,324 @@ body{
 
     color:#ffe6f2;
 
-    font-size:13px;
+    font-size:12px;
 
-    line-height:1.8;
+    line-height:1.55;
 
-    text-shadow:
-        0 0 5px #ff69b4,
-        0 0 12px #ff1493,
-        0 0 22px #ff0080;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,20,147,.10),
+            rgba(255,0,128,.04),
+            rgba(160,0,255,.08)
+        );
+
+    border:
+        1px solid
+        rgba(255,140,200,.25);
+
+    border-radius:18px;
+
+    box-shadow:
+        0 0 15px
+        rgba(255,20,147,.12),
+
+        inset 0 0 20px
+        rgba(255,20,147,.04);
+
+    backdrop-filter:blur(5px);
+
+    -webkit-backdrop-filter:blur(5px);
 
     animation:
-        proposalGlow 2s ease-in-out infinite alternate;
+        proposalGlow
+        2.5s
+        ease-in-out
+        infinite alternate;
 }
 
+
+/* Top glowing line */
+
+.proposal::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:15%;
+    right:15%;
+
+    top:0;
+
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #ff69b4,
+            #fff,
+            #ff1493,
+            transparent
+        );
+
+    box-shadow:
+        0 0 8px #ff1493;
+
+    animation:
+        borderMove
+        3s
+        linear
+        infinite;
+}
+
+@keyframes borderMove{
+
+    0%{
+        opacity:.3;
+        transform:scaleX(.5);
+    }
+
+    50%{
+        opacity:1;
+        transform:scaleX(1);
+    }
+
+    100%{
+        opacity:.3;
+        transform:scaleX(.5);
+    }
+}
+
+
+/* Proposal lines */
 
 .proposal .line{
 
+    position:relative;
+
     opacity:0;
 
+    margin:1px 0;
+
+    text-shadow:
+        0 0 4px #ff69b4,
+        0 0 10px #ff1493;
+
     animation:
-        lineAppear 1s forwards;
+        lineAppear
+        1s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
 }
 
+
+/* Small heart before each line */
+
+.proposal .line::before{
+
+    content:"♥";
+
+    display:inline-block;
+
+    margin-right:5px;
+
+    color:#ff69b4;
+
+    font-size:8px;
+
+    text-shadow:
+        0 0 7px #ff1493;
+
+    animation:
+        miniHeart
+        1.5s
+        ease-in-out
+        infinite alternate;
+}
+
+@keyframes miniHeart{
+
+    from{
+        transform:scale(.7);
+        opacity:.5;
+    }
+
+    to{
+        transform:scale(1.2);
+        opacity:1;
+    }
+}
+
+
+/* Stagger */
+
 .proposal .line:nth-child(1){
-    animation-delay:.5s;
+    animation-delay:.4s;
 }
 
 .proposal .line:nth-child(2){
-    animation-delay:1.2s;
+    animation-delay:1s;
 }
 
 .proposal .line:nth-child(3){
-    animation-delay:1.9s;
+    animation-delay:1.6s;
 }
 
 .proposal .line:nth-child(4){
-    animation-delay:2.6s;
+    animation-delay:2.2s;
 }
 
 .proposal .line:nth-child(5){
-    animation-delay:3.3s;
+    animation-delay:2.8s;
 }
 
 .proposal .line:nth-child(6){
-    animation-delay:4s;
+    animation-delay:3.4s;
 }
 
 .proposal .line:nth-child(7){
-    animation-delay:4.7s;
+    animation-delay:4s;
 }
 
 
+/* Signature */
+
 .signature{
 
-    margin-top:7px;
+    margin-top:6px;
 
-    color:#ff8fc5;
+    padding-top:5px;
 
-    font-size:15px;
+    border-top:
+        1px solid
+        rgba(255,130,190,.15);
+
+    color:#ff9dcc;
+
+    font-size:14px;
 
     font-weight:bold;
 
     opacity:0;
 
-    animation:
-        signatureAppear 1.5s 5.3s forwards;
-
     text-shadow:
         0 0 8px #ff1493,
-        0 0 18px #ff1493;
-}
+        0 0 18px #ff1493,
+        0 0 30px #ff0080;
 
+    animation:
+        signatureAppear
+        1.5s
+        4.7s
+        forwards,
+
+        signatureGlow
+        2s
+        6s
+        ease-in-out
+        infinite
+        alternate;
+}
 
 @keyframes lineAppear{
 
     from{
+
         opacity:0;
+
         transform:
-            translateY(12px);
+            translateY(15px)
+            scale(.97);
+
+        filter:blur(4px);
     }
 
     to{
+
         opacity:1;
+
         transform:
-            translateY(0);
+            translateY(0)
+            scale(1);
+
+        filter:blur(0);
     }
 }
 
 @keyframes signatureAppear{
 
     from{
+
         opacity:0;
+
         transform:
+            translateY(12px)
             scale(.7);
+
+        filter:blur(5px);
     }
 
     to{
+
         opacity:1;
+
         transform:
+            translateY(0)
             scale(1);
+
+        filter:blur(0);
+    }
+}
+
+@keyframes signatureGlow{
+
+    from{
+
+        text-shadow:
+            0 0 5px #ff1493;
+    }
+
+    to{
+
+        text-shadow:
+            0 0 8px #fff,
+            0 0 18px #ff1493,
+            0 0 35px #ff0080;
     }
 }
 
 @keyframes proposalGlow{
 
     from{
-        filter:brightness(.85);
+
+        box-shadow:
+            0 0 12px
+            rgba(255,20,147,.10),
+
+            inset 0 0 15px
+            rgba(255,20,147,.03);
     }
 
     to{
-        filter:brightness(1.2);
+
+        box-shadow:
+            0 0 25px
+            rgba(255,20,147,.20),
+
+            0 0 50px
+            rgba(255,0,128,.08),
+
+            inset 0 0 25px
+            rgba(255,20,147,.06);
     }
 }
 
 
-/* =========================
+/* =====================================================
    FLOATING HEARTS
-========================= */
+===================================================== */
 
 .floatHeart{
 
@@ -764,10 +1714,13 @@ body{
 
     text-shadow:
         0 0 8px #ff1493,
-        0 0 18px #ff1493;
+        0 0 18px #ff1493,
+        0 0 30px #ff0080;
 
     animation:
-        floatUp linear infinite;
+        floatUp
+        linear
+        infinite;
 
     pointer-events:none;
 }
@@ -775,6 +1728,7 @@ body{
 @keyframes floatUp{
 
     0%{
+
         transform:
             translateY(110vh)
             scale(.3)
@@ -788,6 +1742,7 @@ body{
     }
 
     100%{
+
         transform:
             translateY(-20vh)
             scale(1.3)
@@ -798,9 +1753,9 @@ body{
 }
 
 
-/* =========================
+/* =====================================================
    PARTICLES
-========================= */
+===================================================== */
 
 .particle{
 
@@ -819,7 +1774,10 @@ body{
         0 0 20px #ff1493;
 
     animation:
-        twinkle 2s ease-in-out infinite alternate;
+        twinkle
+        2s
+        ease-in-out
+        infinite alternate;
 }
 
 @keyframes twinkle{
@@ -836,56 +1794,185 @@ body{
 }
 
 
-/* =========================
-   HIDDEN MAIN SCREEN
-========================= */
-
-#scene{
-    opacity:0;
-    visibility:hidden;
-
-    transition:
-        opacity 1.5s ease;
-}
-
-
-/* =========================
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
 @media(max-width:600px){
 
-    .giftTitle{
-        font-size:27px;
+    .proposeScene{
+
+        top:18%;
+
+        transform:
+            translateX(-50%)
+            scale(.82);
     }
 
-    .giftIcon{
-        font-size:70px;
+    .giftContent{
+
+        bottom:5%;
+    }
+
+    .giftTitle{
+
+        font-size:25px;
+    }
+
+    .giftSmall{
+
+        font-size:11px;
+    }
+
+    .giftSubtitle{
+
+        font-size:12px;
+
+        margin-bottom:16px;
     }
 
     .title{
+
         font-size:34px;
     }
 
     .loveText{
+
         font-size:8px;
     }
 
     .proposal{
-        font-size:11px;
-        line-height:1.65;
-        bottom:15px;
+
+        bottom:1.5vh;
+
+        width:95%;
+
+        padding:
+            9px 7px 8px;
+
+        font-size:10.5px;
+
+        line-height:1.48;
+
+        border-radius:16px;
+    }
+
+    .proposal .line{
+
+        margin:.5px 0;
+    }
+
+    .signature{
+
+        font-size:13px;
+
+        margin-top:4px;
+
+        padding-top:4px;
+    }
+
+    .center{
+
+        top:29%;
     }
 
     .small{
+
         font-size:9px;
+
         letter-spacing:3px;
     }
 
     .subtitle{
+
         font-size:10px;
+
+        letter-spacing:1px;
     }
 
+    .bigHeart{
+
+        margin-top:13px;
+
+        width:27px;
+        height:27px;
+    }
+
+    .bigHeart:before,
+    .bigHeart:after{
+
+        width:27px;
+        height:27px;
+    }
+
+    .bigHeart:before{
+        top:-13px;
+    }
+
+    .bigHeart:after{
+        left:13px;
+    }
+
+    #giftScreen::after{
+
+        width:100px;
+        height:100px;
+
+        top:8%;
+        right:7%;
+    }
+}
+
+
+/* =====================================================
+   VERY SMALL PHONE
+===================================================== */
+
+@media(max-width:380px){
+
+    .proposeScene{
+
+        top:17%;
+
+        transform:
+            translateX(-50%)
+            scale(.70);
+    }
+
+    .giftContent{
+
+        bottom:4%;
+    }
+
+    .giftTitle{
+
+        font-size:23px;
+    }
+
+    .title{
+
+        font-size:30px;
+    }
+
+    .proposal{
+
+        font-size:9.5px;
+
+        line-height:1.42;
+
+        padding:
+            7px 5px 6px;
+    }
+
+    .signature{
+
+        font-size:12px;
+    }
+
+    .center{
+
+        top:27%;
+    }
 }
 
 </style>
@@ -895,22 +1982,83 @@ body{
 <body>
 
 
-<!-- =================================
-     GIFT OPEN SCREEN
-================================= -->
+<!-- =====================================================
+     GIFT SCREEN
+===================================================== -->
 
 <div id="giftScreen">
 
     <div class="giftGlow"></div>
 
+
+    <!-- =================================================
+         CINEMATIC PROPOSAL ANIMATION
+    ================================================= -->
+
+    <div class="proposeScene">
+
+        <div class="ground"></div>
+
+
+        <!-- Floating romantic hearts -->
+
+        <div class="miniHeart">♥</div>
+        <div class="miniHeart">♡</div>
+        <div class="miniHeart">♥</div>
+        <div class="miniHeart">♡</div>
+
+
+        <!-- GIRL -->
+
+        <div class="girl">
+
+            <div class="hair"></div>
+
+            <div class="head"></div>
+
+            <div class="body"></div>
+
+            <div class="leg1"></div>
+            <div class="leg2"></div>
+
+        </div>
+
+
+        <!-- BOY -->
+
+        <div class="boy">
+
+            <div class="hair"></div>
+
+            <div class="head"></div>
+
+            <div class="body"></div>
+
+            <div class="arm"></div>
+
+            <div class="leg1"></div>
+            <div class="leg2"></div>
+
+        </div>
+
+
+        <!-- HEART OFFER -->
+
+        <div class="proposeHeart">
+            ❤️
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         GIFT TEXT
+    ================================================= -->
+
     <div class="giftContent">
 
         <div class="giftSmall">
             একটি ছোট্ট উপহার
-        </div>
-
-        <div class="giftIcon">
-            🎁
         </div>
 
         <div class="giftTitle">
@@ -935,9 +2083,9 @@ body{
 
 
 
-<!-- =================================
-     MAIN ANIMATION
-================================= -->
+<!-- =====================================================
+     MAIN SCENE
+===================================================== -->
 
 <div id="scene">
 
@@ -946,7 +2094,9 @@ body{
     <div id="heart"></div>
 
 
-    <!-- CENTER -->
+    <!-- =================================================
+         CENTER TITLE
+    ================================================= -->
 
     <div class="center">
 
@@ -967,8 +2117,9 @@ body{
     </div>
 
 
-
-    <!-- PROPOSAL -->
+    <!-- =================================================
+         PROPOSAL MESSAGE
+    ================================================= -->
 
     <div class="proposal">
 
@@ -1012,10 +2163,9 @@ body{
 
 <script>
 
-
-/* =================================
+/* =====================================================
    OPEN GIFT
-================================= */
+===================================================== */
 
 function openGift(){
 
@@ -1026,7 +2176,7 @@ function openGift(){
         document.getElementById("scene");
 
 
-    /* Hide gift */
+    /* Fade out Gift Screen */
 
     gift.style.opacity="0";
 
@@ -1034,7 +2184,7 @@ function openGift(){
         "scale(1.15)";
 
 
-    /* Show animation */
+    /* Show main animation */
 
     setTimeout(()=>{
 
@@ -1045,14 +2195,12 @@ function openGift(){
         scene.style.opacity="1";
 
     },900);
-
 }
 
 
-
-/* =================================
-   CREATE HEART TEXT
-================================= */
+/* =====================================================
+   CREATE 3D HEART TEXT
+===================================================== */
 
 const heart =
     document.getElementById("heart");
@@ -1062,13 +2210,13 @@ const total=240;
 
 for(let i=0;i<total;i++){
 
-    const item=
+    const item =
         document.createElement("div");
 
     item.className="love";
 
 
-    const text=
+    const text =
         document.createElement("div");
 
     text.className="loveText";
@@ -1083,10 +2231,9 @@ for(let i=0;i<total;i++){
 }
 
 
-
-/* =================================
+/* =====================================================
    3D HEART ANIMATION
-================================= */
+===================================================== */
 
 let time=0;
 
@@ -1096,26 +2243,25 @@ function animateHeart(){
     time+=.012;
 
 
-    const items=
+    const items =
         document.querySelectorAll(".love");
 
 
     items.forEach((item,i)=>{
 
-
-        const t=
+        const t =
             (Math.PI*2*i)/total;
 
 
         /* Heart equation */
 
-        const x=
+        const x =
             16*Math.pow(
                 Math.sin(t),3
             );
 
 
-        const y=
+        const y =
             13*Math.cos(t)
             -5*Math.cos(2*t)
             -2*Math.cos(3*t)
@@ -1125,39 +2271,42 @@ function animateHeart(){
         const size=14;
 
 
-        const px=x*size;
-        const py=-y*size;
+        const px =
+            x*size;
+
+        const py =
+            -y*size;
 
 
         /* 3D depth */
 
-        const z=
+        const z =
             Math.sin(
                 time*1.5+i*.035
             )*70;
 
 
-        const rotateY=
+        /* Rotation */
+
+        const rotateY =
             Math.sin(time*.7)*25;
 
-
-        const rotateX=
+        const rotateX =
             Math.cos(time*.5)*10;
 
-
-        const rotateZ=
+        const rotateZ =
             Math.sin(t)*20;
 
 
-        item.style.left=
+        item.style.left =
             `calc(50% + ${px}px)`;
 
 
-        item.style.top=
-            `calc(42% + ${py}px)`;
+        item.style.top =
+            `calc(35% + ${py}px)`;
 
 
-        item.style.transform=
+        item.style.transform =
             `translate(-50%,-50%)
              translateZ(${z}px)
              rotateX(${rotateX}deg)
@@ -1165,21 +2314,23 @@ function animateHeart(){
              rotateZ(${rotateZ}deg)`;
 
 
-        const depth=
+        /* Depth brightness */
+
+        const depth =
             (z+70)/140;
 
 
-        item.style.opacity=
+        item.style.opacity =
             .25+(depth*.75);
 
 
-        const scale=
+        const scale =
             .6+(depth*.45);
 
 
         item.querySelector(
             ".loveText"
-        ).style.transform=
+        ).style.transform =
             `scale(${scale})`;
 
     });
@@ -1188,21 +2339,19 @@ function animateHeart(){
     requestAnimationFrame(
         animateHeart
     );
-
 }
 
 
 animateHeart();
 
 
-
-/* =================================
+/* =====================================================
    FLOATING HEARTS
-================================= */
+===================================================== */
 
 for(let i=0;i<35;i++){
 
-    const h=
+    const h =
         document.createElement("div");
 
 
@@ -1210,45 +2359,43 @@ for(let i=0;i<35;i++){
         "floatHeart";
 
 
-    h.innerHTML=
+    h.innerHTML =
         Math.random()>.5
         ?"♥"
         :"♡";
 
 
-    h.style.left=
+    h.style.left =
         Math.random()*100+"%";
 
 
-    h.style.fontSize=
+    h.style.fontSize =
         (8+Math.random()*20)+"px";
 
 
-    h.style.animationDuration=
+    h.style.animationDuration =
         (5+Math.random()*7)+"s";
 
 
-    h.style.animationDelay=
+    h.style.animationDelay =
         (-Math.random()*8)+"s";
 
 
     heart.appendChild(h);
-
 }
 
 
-
-/* =================================
+/* =====================================================
    STAR PARTICLES
-================================= */
+===================================================== */
 
-const scene=
+const scene =
     document.getElementById("scene");
 
 
-for(let i=0;i<70;i++){
+for(let i=0;i<80;i++){
 
-    const p=
+    const p =
         document.createElement("div");
 
 
@@ -1256,24 +2403,23 @@ for(let i=0;i<70;i++){
         "particle";
 
 
-    p.style.left=
+    p.style.left =
         Math.random()*100+"%";
 
 
-    p.style.top=
+    p.style.top =
         Math.random()*100+"%";
 
 
-    p.style.animationDelay=
+    p.style.animationDelay =
         Math.random()*2+"s";
 
 
-    p.style.animationDuration=
+    p.style.animationDuration =
         (1+Math.random()*2)+"s";
 
 
     scene.appendChild(p);
-
 }
 
 </script>
